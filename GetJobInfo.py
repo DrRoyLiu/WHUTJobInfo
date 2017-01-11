@@ -27,7 +27,7 @@ class GetJobInfo:
         xls.write(0, 0, '时间')
         xls.write(0, 1, '地点')
         xls.write(0, 2, '公司')
-        xls.write(0, 3, '详情')
+        xls.write(0, 3, '详情页面')
         row = 1
         for i in self.times:
             xls.write(row, 0, i)
@@ -42,7 +42,7 @@ class GetJobInfo:
             row += 1
         row = 1
         for i in self.details:
-            xls.write(row, 3, self.root_url + i)
+            xls.write_url(row, 3, self.root_url + i, '(点击查看)')
             row += 1
         xls.save(u'D:/info.xls')
 
