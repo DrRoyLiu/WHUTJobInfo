@@ -44,7 +44,14 @@ class GetJobInfo:
         for i in self.details:
             xls.write_url(row, 3, self.root_url + i, '(点击查看)')
             row += 1
-        xls.save(u'D:/info.xls')
+
+        date_now = time.strftime(r'%Y-%m-%d_%H-%M', time.localtime())
+        # 根据系统决定路径
+        if platform.platform().lower().startswith('windows'):
+            path = r'D:/WHUTJobInfo_'
+        else:
+            path = r'~/WHUTJobInfo_'
+        xls.save(path + date_now + '.xls')
 
     def get_job_info(self):
         while 1:
